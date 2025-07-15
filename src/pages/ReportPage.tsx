@@ -1,14 +1,16 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
+import ReportSection from '@/components/ReportSection';
 
-const Index = () => {
+const ReportPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero />
+      <div className="pt-16">
+        <ReportSection />
+      </div>
     </div>
   );
 };
 
-export default Index;
+export default ReportPage;

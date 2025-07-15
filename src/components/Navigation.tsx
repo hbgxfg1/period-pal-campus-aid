@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Heart, Shield, BarChart3 } from 'lucide-react';
 
@@ -6,9 +7,9 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Report Issue', href: '#report', icon: Heart },
-    { name: 'Dashboard', href: '#dashboard', icon: BarChart3 },
-    { name: 'Audit', href: '#audit', icon: Shield },
+    { name: 'Report Issue', href: '/report', icon: Heart },
+    { name: 'Dashboard', href: '/dashboard', icon: BarChart3 },
+    { name: 'Audit', href: '/audit', icon: Shield },
   ];
 
   return (
@@ -25,18 +26,20 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors duration-200"
               >
                 <item.icon className="h-4 w-4" />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             ))}
-            <Button variant="gradient" size="sm">
-              Get Started
-            </Button>
+            <Link to="/report">
+              <Button variant="gradient" size="sm">
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -56,19 +59,21 @@ const Navigation = () => {
           <div className="md:hidden py-4 border-t border-white/10">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   className="flex items-center space-x-2 text-foreground hover:text-primary transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
                   <item.icon className="h-4 w-4" />
                   <span>{item.name}</span>
-                </a>
+                </Link>
               ))}
-              <Button variant="gradient" size="sm" className="w-fit">
-                Get Started
-              </Button>
+              <Link to="/report">
+                <Button variant="gradient" size="sm" className="w-fit">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         )}

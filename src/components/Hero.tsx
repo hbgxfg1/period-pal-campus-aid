@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Heart, Shield, BarChart3, Users } from 'lucide-react';
 
@@ -53,13 +54,17 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
-            <Button variant="glass" size="lg" className="group">
-              Start Reporting
-              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-primary">
-              View Dashboard
-            </Button>
+            <Link to="/report">
+              <Button variant="glass" size="lg" className="group">
+                Start Reporting
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white hover:text-primary">
+                View Dashboard
+              </Button>
+            </Link>
           </div>
         </div>
 
