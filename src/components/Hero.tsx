@@ -70,19 +70,37 @@ const Hero = () => {
 
         {/* Feature cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="glass-card p-6 rounded-xl hover:bg-white/20 transition-all duration-300 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
-                <feature.icon className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-              <p className="text-white/80 text-sm">{feature.description}</p>
-            </div>
-          ))}
+          {features.map((feature, index) => {
+            const getFeatureLink = (title: string) => {
+              switch (title) {
+                case 'Anonymous Reporting':
+                  return '/report';
+                case 'Real-time Analytics':
+                  return '/dashboard';
+                case 'Campus Auditing':
+                  return '/audit';
+                case 'Community Impact':
+                  return '/dashboard';
+                default:
+                  return '/';
+              }
+            };
+
+            return (
+              <Link
+                key={feature.title}
+                to={getFeatureLink(feature.title)}
+                className="glass-card p-6 rounded-xl hover:bg-white/20 transition-all duration-300 animate-fade-in-up cursor-pointer"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                  <feature.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-white/80 text-sm">{feature.description}</p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
