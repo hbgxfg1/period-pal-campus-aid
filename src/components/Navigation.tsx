@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Heart, Shield, BarChart3 } from 'lucide-react';
+import { Menu, X, Heart, Shield, BarChart3, LogIn, UserPlus } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,11 +36,20 @@ const Navigation = () => {
                 <span>{item.name}</span>
               </Link>
             ))}
-            <Link to="/report">
-              <Button variant="gradient" size="sm">
-                Get Started
-              </Button>
-            </Link>
+            <div className="flex items-center space-x-2">
+              <Link to="/login">
+                <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                  <LogIn className="h-4 w-4" />
+                  <span>Login</span>
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="gradient" size="sm" className="flex items-center space-x-2">
+                  <UserPlus className="h-4 w-4" />
+                  <span>Sign Up</span>
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -69,11 +79,20 @@ const Navigation = () => {
                   <span>{item.name}</span>
                 </Link>
               ))}
-              <Link to="/report">
-                <Button variant="gradient" size="sm" className="w-fit">
-                  Get Started
-                </Button>
-              </Link>
+              <div className="flex flex-col space-y-2 pt-2">
+                <Link to="/login">
+                  <Button variant="ghost" size="sm" className="w-fit flex items-center space-x-2">
+                    <LogIn className="h-4 w-4" />
+                    <span>Login</span>
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button variant="gradient" size="sm" className="w-fit flex items-center space-x-2">
+                    <UserPlus className="h-4 w-4" />
+                    <span>Sign Up</span>
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
