@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -18,6 +18,7 @@ import {
 
 const Dashboard = () => {
   const [timeRange, setTimeRange] = useState('7d');
+  const navigate = useNavigate();
 
   // Fake data for college campus
   const stats = [
@@ -235,6 +236,14 @@ const Dashboard = () => {
     }
   };
 
+  const handleStatsClick = (type: string) => {
+    navigate(`/analytics?type=${type}`);
+  };
+
+  const handleBuildingClick = (buildingName: string) => {
+    navigate(`/analytics?building=${encodeURIComponent(buildingName)}`);
+  };
+
   return (
     <section id="dashboard" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -273,7 +282,11 @@ const Dashboard = () => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
-            <Card key={stat.title} className="p-6 glass-card border-primary/10 hover:shadow-glow transition-all duration-300">
+            <Card 
+              key={stat.title} 
+              className="p-6 glass-card border-primary/10 hover:shadow-glow transition-all duration-300 cursor-pointer"
+              onClick={() => handleStatsClick(['total', 'resolved', 'pending', 'critical'][index])}
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">{stat.title}</p>
@@ -344,7 +357,11 @@ const Dashboard = () => {
             
             <div className="space-y-4 max-h-96 overflow-y-auto">
               {locationData.map((location, index) => (
-                <div key={location.name} className="space-y-2">
+                <div 
+                  key={location.name} 
+                  className="space-y-2 cursor-pointer hover:bg-muted/30 p-2 rounded-lg transition-colors"
+                  onClick={() => handleBuildingClick(location.name)}
+                >
                   <div className="flex justify-between items-center">
                     <span className="font-medium text-foreground text-sm">{location.name}</span>
                     <div className="flex items-center space-x-2">
@@ -372,7 +389,11 @@ const Dashboard = () => {
               ))}
             </div>
 
-            <Button variant="outline" className="w-full mt-6">
+            <Button 
+              variant="outline" 
+              className="w-full mt-6"
+              onClick={() => navigate('/analytics')}
+            >
               <MapPin className="h-4 w-4 mr-2" />
               View Campus Map
             </Button>
