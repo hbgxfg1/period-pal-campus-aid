@@ -78,7 +78,7 @@ const LoginPage = () => {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                  className="bg-white/30 border-white/50 text-white placeholder:text-white/70 focus-visible:bg-white/40"
                   required
                 />
               </div>
@@ -91,7 +91,7 @@ const LoginPage = () => {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="bg-white/10 border-white/20 text-white placeholder:text-white/60"
+                  className="bg-white/30 border-white/50 text-white placeholder:text-white/70 focus-visible:bg-white/40"
                   required
                 />
               </div>
