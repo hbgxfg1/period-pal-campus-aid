@@ -43,7 +43,7 @@ const AdminDashboard = () => {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'high': return 'destructive';
-      case 'medium': return 'warning';
+      case 'medium': return 'outline';
       case 'low': return 'secondary';
       default: return 'secondary';
     }
