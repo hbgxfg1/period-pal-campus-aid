@@ -154,26 +154,16 @@ const Dashboard = () => {
             <h1 className="text-4xl font-bold text-gradient mb-2">User Dashboard</h1>
             <p className="text-muted-foreground">Overview of facility status and recent reports</p>
           </div>
-          <div className="flex items-center space-x-4">
-            <Tabs defaultValue="dashboard" className="w-[400px]">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-                <TabsTrigger value="forum">Discussion Forum</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="dashboard">
-                <div className="flex items-center space-x-2">
-                  <Badge variant="secondary" className="flex items-center space-x-1">
-                    <Calendar className="h-3 w-3" />
-                    <span>Today</span>
-                  </Badge>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
         </div>
 
         <Tabs defaultValue="dashboard" className="w-full">
+          <div className="flex justify-end mb-6">
+            <TabsList className="grid w-[400px] grid-cols-2">
+              <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+              <TabsTrigger value="forum">Discussion Forum</TabsTrigger>
+            </TabsList>
+          </div>
+          
           <TabsContent value="dashboard">
             {/* Main Content Area */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
