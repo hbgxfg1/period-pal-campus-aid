@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarContent, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { 
   MessageCircle, 
   Heart, 
@@ -105,8 +105,8 @@ const DiscussionForum = () => {
       case 'hygiene': return 'default';
       case 'privacy': return 'outline';
       case 'suggestion': return 'secondary';
-      case 'appreciation': return 'success';
-      case 'feedback': return 'info';
+      case 'appreciation': return 'default';
+      case 'feedback': return 'secondary';
       default: return 'secondary';
     }
   };
@@ -171,7 +171,7 @@ const DiscussionForum = () => {
                     <div className="flex items-center space-x-2">
                       <h3 className="font-semibold text-lg">{discussion.title}</h3>
                       {discussion.isResolved && (
-                        <Badge variant="success" className="text-xs">Resolved</Badge>
+                        <Badge variant="default" className="text-xs bg-green-500 text-white">Resolved</Badge>
                       )}
                     </div>
                     <Badge variant={getCategoryColor(discussion.category)} className="text-xs">

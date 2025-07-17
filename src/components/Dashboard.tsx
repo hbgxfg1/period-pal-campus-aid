@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -161,6 +160,7 @@ const Dashboard = () => {
                 <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
                 <TabsTrigger value="forum">Discussion Forum</TabsTrigger>
               </TabsList>
+              
               <TabsContent value="dashboard">
                 <div className="flex items-center space-x-2">
                   <Badge variant="secondary" className="flex items-center space-x-1">
@@ -168,9 +168,6 @@ const Dashboard = () => {
                     <span>Today</span>
                   </Badge>
                 </div>
-              </TabsContent>
-              <TabsContent value="forum">
-                <DiscussionForum />
               </TabsContent>
             </Tabs>
           </div>
@@ -313,6 +310,7 @@ const Dashboard = () => {
               </CardContent>
             </Card>
           </TabsContent>
+          
           <TabsContent value="forum">
             <DiscussionForum />
           </TabsContent>
